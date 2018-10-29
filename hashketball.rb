@@ -28,25 +28,41 @@ def game_hash
 end
 
 def num_points_scored(player_name)
-  game_hash[:home].each do |key, val|
-    if key == :players
-    val.each do |name, player_values|
+  game_hash.each do |team, features|
+
+  features[:players].each do |name, player_values|
         if name.to_s == player_name
           return player_values[:points]
         end
       end
     end
   end
-  game_hash[:away].each do |key, val|
-    if key == :players
-    val.each do |name, player_values|
-        if name.to_s == player_name
-          return player_values[:points]
+
+def player_by_number(num)
+  # returns the name of the player who has that jersey number 
+
+    game_hash.each do |team, features|
+
+  features[:players].each do |name, player_values|
+        if num == player_values[:number]
+         return name
         end
       end
     end
+    name
   end
-end
+  puts player_by_number(33)
+  
+#   game_hash[:away].each do |key, val|
+#     if key == :players
+#     val.each do |name, player_values|
+#         if name.to_s == player_name
+#           return player_values[:points]
+#         end
+#       end
+#     end
+#   end
+# end
 
 def shoe_size(player_name)
   game_hash[:home].each do |key, val|
