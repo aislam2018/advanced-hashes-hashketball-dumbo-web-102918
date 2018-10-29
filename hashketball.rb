@@ -32,7 +32,7 @@ def num_points_scored(player_name)
 
   features[:players].each do |name, player_values|
     binding.pry
-        if name.to_s == player_name
+        if name == player_name
           return player_values[:points]
         end
       end
